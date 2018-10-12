@@ -29,11 +29,11 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFF"
             android:ems="10"
             android:hint="Name"
             android:inputType="textPersonName"
-            android:textSize="25sp"
-            android:background="#FFF"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/et_mobile"
@@ -42,11 +42,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFF"
             android:ems="10"
             android:hint="Mobile"
             android:inputType="textPersonName"
-            android:textSize="25sp"
-            android:background="#FFF"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/et_email"
@@ -55,11 +55,11 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFF"
             android:ems="10"
             android:hint="Email"
             android:inputType="textPersonName"
-            android:textSize="25sp"
-            android:background="#FFF"/>
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/et_password_reg"
@@ -68,23 +68,23 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:background="#FFF"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPersonName"
-            android:textSize="25sp"
-            android:background="#FFF"/>
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/btn_Send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="#4f5db3"
             android:text="Send"
             android:textColor="#FFF"
-            android:textSize="25sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:textSize="25sp" />
 
 
     </LinearLayout>
