@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterFragment"
     android:background="#f1f918">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:rotation="90"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/splashbackground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="524dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical">
 
         <TextView
@@ -18,6 +29,7 @@
             android:layout_marginTop="50dp"
             android:text="Sign Up"
             android:textAlignment="center"
+            android:textColor="#FFF"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -28,7 +40,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="#FFF"
             android:ems="10"
             android:hint="Name"
@@ -41,12 +53,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="#FFF"
             android:ems="10"
             android:hint="Mobile"
             android:inputType="textPersonName"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            />
 
         <EditText
             android:id="@+id/et_email"
@@ -54,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:background="#FFF"
             android:ems="10"
             android:hint="Email"
@@ -74,21 +87,23 @@
             android:inputType="textPersonName"
             android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btn_Send"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#4f5db3"
-            android:text="Send"
-            android:textColor="#FFF"
-            android:textSize="25sp" />
+
+
+            <Button
+                android:id="@+id/btn_Send"
+                android:layout_width="194dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="115dp"
+                android:layout_marginRight="10dp"
+                android:background="#2440a3"
+                android:text="Send"
+                android:textColor="#FFF"
+                android:textSize="25sp" />
+
 
 
     </LinearLayout>
-
-
 
 </FrameLayout>

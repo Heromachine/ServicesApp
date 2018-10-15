@@ -1,6 +1,9 @@
 package com.example.jessi.servicesapp;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -8,9 +11,9 @@ import com.android.volley.toolbox.Volley;
 
 public class AppController extends Application {
     private static final String TAG = "AppController";
-
     private RequestQueue requestQueue;
     private static AppController mInstance;
+    private User currentUser;
 
     @Override
     public void onCreate() {
@@ -35,8 +38,35 @@ public class AppController extends Application {
     }
 
     public void cancelPendingRequests(Object tag) {
+
         if(requestQueue != null) {
             requestQueue.cancelAll(tag);
         }
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public void alertUserError(String message, Context context){
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog emptyFieldAlert = alert.create();
+        emptyFieldAlert.show();
+    }
+
+    public void getCurrentUserPreferences(){
+
     }
 }

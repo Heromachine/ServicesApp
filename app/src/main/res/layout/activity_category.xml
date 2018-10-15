@@ -5,12 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".CategoryActivity"
-    android:background="#f1f918">
+    android:background="#e7ecfa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_category_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Services"
+            android:textColor="#1a42df"
+            android:textSize="50sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
- />
+        android:layout_marginBottom="15dp"/>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
