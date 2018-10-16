@@ -1,4 +1,4 @@
-package com.example.jessi.servicesapp;
+package com.example.jessi.servicesapp.login;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.jessi.servicesapp.AppController;
+import com.example.jessi.servicesapp.R;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;

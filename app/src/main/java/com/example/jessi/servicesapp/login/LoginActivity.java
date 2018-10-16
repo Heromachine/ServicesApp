@@ -1,4 +1,4 @@
-package com.example.jessi.servicesapp;
+package com.example.jessi.servicesapp.login;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +16,10 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.jessi.servicesapp.AppController;
+import com.example.jessi.servicesapp.R;
+import com.example.jessi.servicesapp.User;
+import com.example.jessi.servicesapp.category.CategoryActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

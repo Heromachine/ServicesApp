@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFragment"
+    tools:context=".login.RegisterFragment"
     android:background="#f1f918">
 
     <ImageView
@@ -89,18 +89,18 @@
 
 
 
-            <Button
-                android:id="@+id/btn_Send"
-                android:layout_width="194dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="115dp"
-                android:layout_marginRight="10dp"
-                android:background="#2440a3"
-                android:text="Send"
-                android:textColor="#FFF"
-                android:textSize="25sp" />
+        <Button
+            android:id="@+id/btn_Send"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginRight="10dp"
+            android:background="#2440a3"
+            android:text="Send"
+            android:textColor="#FFF"
+            android:textSize="25sp" />
 
 
 

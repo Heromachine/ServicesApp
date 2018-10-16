@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".category.CategoryActivity"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:background="#e7ecfa">
+    android:layout_height="match_parent"
+    android:background="#e7ecfa"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".subcategory.SubCategoryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
-            android:id="@+id/tv_category_title"
+            android:id="@+id/tv_subcategory_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Services"
+            android:text="Subcategory"
             android:textColor="#1a42df"
-            android:textSize="40sp"
+            android:textSize="40dp"
             android:textStyle="bold"/>
-
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_category"
+            android:id="@+id/rv_subcategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
