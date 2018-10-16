@@ -20,6 +20,7 @@ import com.example.jessi.servicesapp.AppController;
 import com.example.jessi.servicesapp.R;
 import com.example.jessi.servicesapp.User;
 import com.example.jessi.servicesapp.category.CategoryActivity;
+import com.example.jessi.servicesapp.category.CategoryNav;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                 User tempUser = new User();
                                 tempUser.setUserID(response.get("userId").toString());
                                 AppController.getInstance().setCurrentUser(tempUser);
-                                startNextActivity(LoginActivity.this, CategoryActivity.class);
+                                startNextActivity(LoginActivity.this, CategoryNav.class);
                             }
                             else if(result.equals("email_password_error")){
 
@@ -130,16 +131,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void alertUserError(String message, Context context){
-        AlertDialog.Builder alert = new AlertDialog.Builder(context);
-        alert.setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        AlertDialog emptyFieldAlert = alert.create();
-        emptyFieldAlert.show();
+//        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+//        alert.setMessage(message)
+//                .setCancelable(false)
+//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.cancel();
+//                    }
+//                });
+//        AlertDialog emptyFieldAlert = alert.create();
+//        emptyFieldAlert.show();
+
+        LogInDialog logInDialog = new LogInDialog(context, message);
+        logInDialog.show();
     }
+
+
 }

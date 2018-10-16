@@ -17,17 +17,23 @@
         <TextView
             android:id="@+id/tv_category_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="138dp"
+            android:background="@drawable/banner"
             android:text="Services"
-            android:textColor="#1a42df"
+            android:textColor="#dbe1fa"
             android:textSize="40sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+            android:padding="10dp"/>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

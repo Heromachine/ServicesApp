@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.jessi.servicesapp.login.LogInDialog;
 
 public class AppController extends Application {
     private static final String TAG = "AppController";
@@ -53,17 +54,20 @@ public class AppController extends Application {
     }
 
     public void alertUserError(String message, Context context){
-        AlertDialog.Builder alert = new AlertDialog.Builder(context);
-        alert.setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        AlertDialog emptyFieldAlert = alert.create();
-        emptyFieldAlert.show();
+//        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+//        alert.setMessage(message)
+//                .setCancelable(false)
+//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.cancel();
+//                    }
+//                });
+//        AlertDialog emptyFieldAlert = alert.create();
+//        emptyFieldAlert.show();
+
+        LogInDialog logInDialog = new LogInDialog(context, message);
+        logInDialog.show();
     }
 
     public void getCurrentUserPreferences(){

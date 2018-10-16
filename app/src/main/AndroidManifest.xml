@@ -15,18 +15,26 @@
         <activity
             android:name=".splash.SplashActivity"
             android:noHistory="true">
-
-        </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".category.CategoryActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".login.LoginActivity">
+
+        </activity>
+        <activity android:name=".category.CategoryActivity"></activity>
         <activity android:name=".services.ServicesActivity" />
-        <activity android:name=".subcategory.SubCategoryActivity"></activity>
+        <activity android:name=".subcategory.SubCategoryActivity" />
+        <activity
+            android:name=".category.CategoryNav"
+            android:label="@string/title_activity_category_nav"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+
+        </activity>
     </application>
 
 </manifest>
