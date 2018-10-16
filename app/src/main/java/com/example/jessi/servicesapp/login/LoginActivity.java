@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.jessi.servicesapp.AppController;
 import com.example.jessi.servicesapp.R;
 import com.example.jessi.servicesapp.User;
+import com.example.jessi.servicesapp.ValidationModel;
 import com.example.jessi.servicesapp.category.CategoryActivity;
 import com.example.jessi.servicesapp.category.CategoryNav;
 
@@ -34,12 +35,23 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
 
+    ValidationModel validationModel;
     private static final String baseURL = "http://servdoservice.com/api/rest/v1/login.php?" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        validationModel = new ValidationModel();
+        validationModel.addPatternString(validationModel.EMAIL_PATTERN);
+        validationModel.addPatternString(validationModel.PASSWORD_PATTERN);
+        validationModel.addFeildNames("Email");
+        validationModel.addFeildNames("Password");
+        validationModel.addErrorMessage("(mail@email.com)\n");
+        validationModel.addErrorMessage("Please try again.");
+
+
 
         btnLogin    = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
@@ -60,7 +72,17 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                volleyCall();
+                validationModel.addTextViewString(email.getText().toString());
+                validationModel.addTextViewString(password.getText().toString());
+                boolean valid = validationModel.validation();
+                if (valid){
+                    volleyCall();
+                }
+                else{
+                    AppController.getInstance().alertUserError(validationModel.getErrormsg(),LoginActivity.this );
+                }
+
+
             }
 
         });
@@ -103,11 +125,15 @@ public class LoginActivity extends AppCompatActivity {
                                 startNextActivity(LoginActivity.this, CategoryNav.class);
                             }
                             else if(result.equals("email_password_error")){
+                                AppController.getInstance().alertUserError
+                                        ("Email or Password are invalid. Please try again.",
+                                                LoginActivity.this);
 
-                                alertUserError("Email or Password are invalid. Please try again.", LoginActivity.this);
                             }
                             else if (result.equals("mandatory_field_required")){
-                                alertUserError("Email/Password are missing. Please complete all fields.", LoginActivity.this);
+                                AppController.getInstance().alertUserError
+                                        ("Email/Password are missing. Please complete all fields.",
+                                                LoginActivity.this);
                             }
 
                         } catch (JSONException e) {
@@ -129,23 +155,4 @@ public class LoginActivity extends AppCompatActivity {
                 new Intent(context, next);
         startActivity(intent);
     }
-
-    private void alertUserError(String message, Context context){
-//        AlertDialog.Builder alert = new AlertDialog.Builder(context);
-//        alert.setMessage(message)
-//                .setCancelable(false)
-//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.cancel();
-//                    }
-//                });
-//        AlertDialog emptyFieldAlert = alert.create();
-//        emptyFieldAlert.show();
-
-        LogInDialog logInDialog = new LogInDialog(context, message);
-        logInDialog.show();
-    }
-
-
 }
