@@ -30,9 +30,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryNav extends AppCompatActivity
+public class CategoryNavActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private static final String TAG = "CategoryNav";
+    private static final String TAG = "CategoryNavActivity";
 
     private static final String URL = "http://servdoservice.com/api/rest/v1/categories.php";
     private RecyclerView recyclerView;
@@ -75,7 +75,6 @@ public class CategoryNav extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-
     }
 
     @Override
@@ -149,16 +148,15 @@ public class CategoryNav extends AppCompatActivity
                                 );
                                 categoryModelList.add(categoryModel);
                             }
-                            //TODO ADD CARDVIEW ADAPTER
+
                             Log.d(TAG, "onResponse: Adapter View Started");
 
                             recyclerView = findViewById(R.id.rv_category_nav);
-                            layoutManager = new LinearLayoutManager(CategoryNav.this);
+                            layoutManager = new LinearLayoutManager(CategoryNavActivity.this);
                             recyclerView.setLayoutManager(layoutManager);
 
-                            adapter = new CategoryAdapter(CategoryNav.this, categoryModelList);
+                            adapter = new CategoryAdapter(CategoryNavActivity.this, categoryModelList);
                             recyclerView.setAdapter(adapter);
-                            //TODO END TODO
 
                         } catch (JSONException e) {
                             Log.d(TAG, "onResponse: error = " + e.getMessage());

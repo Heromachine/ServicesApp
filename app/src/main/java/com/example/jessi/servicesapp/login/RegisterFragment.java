@@ -1,4 +1,5 @@
 package com.example.jessi.servicesapp.login;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,7 +36,7 @@ public class RegisterFragment extends Fragment {
     ValidationModel validationModel;
 
     private final static String url = "http://servdoservice.com/api/rest/v1/registration.php?";
-    private String  finalUrl;
+    private String finalUrl;
 
     @Nullable
     @Override
@@ -58,10 +59,10 @@ public class RegisterFragment extends Fragment {
         validationModel.addErrorMessage(": mail@email.com\n");
         validationModel.addErrorMessage(": No spaces\n");
 
-        etName      =  view.findViewById(R.id.et_name);
+        etName = view.findViewById(R.id.et_name);
         etPhone = view.findViewById(R.id.et_mobile);
-        etEmail     = view.findViewById(R.id.et_email);
-        etPassword  = view.findViewById(R.id.et_password_reg);
+        etEmail = view.findViewById(R.id.et_email);
+        etPassword = view.findViewById(R.id.et_password_reg);
         btnRegister = view.findViewById(R.id.btn_Send);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -78,11 +79,10 @@ public class RegisterFragment extends Fragment {
                 validationModel.addTextViewString(etPassword.getText().toString());
 
                 boolean valid = validationModel.validation();
-                if (valid){
+                if (valid) {
                     volleyCall();
-                }
-                else{
-                    AppController.getInstance().alertUserError(validationModel.getErrormsg(), getContext() );
+                } else {
+                    AppController.getInstance().alertUserError(validationModel.getErrormsg(), getContext());
                 }
 
             }
@@ -91,14 +91,13 @@ public class RegisterFragment extends Fragment {
     }
 
 
-
-    private void prepareURL(String name, String mobile, String email, String password){
-        finalUrl = this.url + "name=" + name +"&phone=" + mobile + "&email=" +email +"&password="+ password;
+    private void prepareURL(String name, String mobile, String email, String password) {
+        finalUrl = this.url + "name=" + name + "&phone=" + mobile + "&email=" + email + "&password=" + password;
         Log.d(TAG, "prepareURL: " + finalUrl);
 
     }
-    private void volleyCall()
-    {
+
+    private void volleyCall() {
         JsonObjectRequest jsonObjectRequest =
                 new JsonObjectRequest(
                         Request.Method.POST,
@@ -113,16 +112,12 @@ public class RegisterFragment extends Fragment {
                                         AppController.getInstance().alertUserError
                                                 ("Registration Successful! Please login", getActivity());
                                         getActivity().getSupportFragmentManager().popBackStack();
-                                    }
-                                    else
-                                    if (result.equals("mandatory_field_required")){
+                                    } else if (result.equals("mandatory_field_required")) {
                                         AppController.getInstance().alertUserError
                                                 ("One or more fields are empty. Please complete all fields to register.", getActivity());
-                                    }
-                                    else
-                                    if (result.equals("email_id_error")){
+                                    } else if (result.equals("email_id_error")) {
                                         AppController.getInstance().alertUserError
-                                                ("Email is Invalid or in use.", getActivity() );
+                                                ("Email is Invalid or in use.", getActivity());
 
                                     }
                                 } catch (JSONException e) {

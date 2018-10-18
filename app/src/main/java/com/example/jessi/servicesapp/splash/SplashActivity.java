@@ -14,6 +14,7 @@ public class SplashActivity extends AppCompatActivity {
     ImageView logo;
     TextView title;
     private Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +25,22 @@ public class SplashActivity extends AppCompatActivity {
         splashScreen(3000);
     }
 
-    public void splashScreen(final int x){
-       Thread thread = new Thread(){
-           //TODO Give run method
+    public void splashScreen(final int x) {
+        Thread thread = new Thread() {
+            //TODO Give run method
 
-           @Override
-           public void run() {
-               super.run();
-               try {
-                   sleep(x);
-                   startActivity(intent);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-           }
-       };
-       thread.start();
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    sleep(x);
+                    startActivity(intent);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
 
     }
 }

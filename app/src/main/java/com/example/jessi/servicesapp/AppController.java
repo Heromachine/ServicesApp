@@ -27,7 +27,7 @@ public class AppController extends Application {
     }
 
     public RequestQueue getRequestQueue() {
-        if(requestQueue == null) {
+        if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
         return requestQueue;
@@ -40,7 +40,7 @@ public class AppController extends Application {
 
     public void cancelPendingRequests(Object tag) {
 
-        if(requestQueue != null) {
+        if (requestQueue != null) {
             requestQueue.cancelAll(tag);
         }
     }
@@ -53,24 +53,13 @@ public class AppController extends Application {
         this.currentUser = currentUser;
     }
 
-    public void alertUserError(String message, Context context){
-//        AlertDialog.Builder alert = new AlertDialog.Builder(context);
-//        alert.setMessage(message)
-//                .setCancelable(false)
-//                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.cancel();
-//                    }
-//                });
-//        AlertDialog emptyFieldAlert = alert.create();
-//        emptyFieldAlert.show();
+    public void alertUserError(String message, Context context) {
 
         LogInDialog logInDialog = new LogInDialog(context, message);
         logInDialog.show();
     }
 
-    public void getCurrentUserPreferences(){
+    public void getCurrentUserPreferences() {
 
     }
 }

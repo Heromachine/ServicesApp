@@ -87,7 +87,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         Log.d(TAG, "onBindViewHolder: category");
         holder.name.setText(categoryModelList.get(position).getCategoryName());
         holder.description.setText(temText + categoryModelList.get(position).getCategoryDescription());
-        Picasso.get().load(categoryModelList.get(position).getCategoryImage()).into(holder.imageView);
+        Picasso.get()
+                .load(categoryModelList
+                        .get(position)
+                        .getCategoryImage())
+                .placeholder(R.drawable.banner)
+                .into(holder.imageView);
         Log.d(TAG, "onBindViewHolder: Category ImageURL: "+ categoryModelList.get(position).getCategoryImage());
     }
 

@@ -56,13 +56,17 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             Toast.makeText(context, "Clicked on: "+ subCategoryModel.getSubCategoryName(), Toast.LENGTH_SHORT).show();
             startNextActivity(view.getContext()
                     , ServicesActivity.class
-                    , subCategoryModel.getSubCategoryId());
+                    , subCategoryModel.getSubCategoryName()
+                    , subCategoryModel.getSubCategoryDescription()
+                    , subCategoryModel.getSubCategoryImage());
         }
 
-        private void startNextActivity(Context context, Class next, String value){
+        private void startNextActivity(Context context, Class next, String name, String description, String ImageUrl){
 
             Intent mIntent = new Intent(context, next);
-            mIntent.putExtra("SERVICES", value);
+            mIntent.putExtra("SERVICES", name);
+            mIntent.putExtra("DESCRIPTION", description);
+            mIntent.putExtra("IMAGEURL", ImageUrl);
             context.startActivity(mIntent);
         }
     }
@@ -89,17 +93,20 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
                 .setText(subCategoryModelList
                         .get(position)
                         .getSubCategoryName());
-        myViewHolder
-                .description
-                .setText(subCategoryModelList
-                        .get(position)
-                        .getSubCategoryDescription());
+//        myViewHolder
+//                .description
+//                .setText(subCategoryModelList
+//                        .get(position)
+//                        .getSubCategoryDescription());
         Picasso
                 .get()
                 .load( subCategoryModelList
                         .get(position)
                         .getSubCategoryImage())
+                .placeholder(R.drawable.banner)
                 .into(myViewHolder.imageView);
+
+
 
        // Log.d(TAG, "onBindViewHolder: ImageURL: "+ subCategoryModelList.get(position).getSubCategoryImage());
 

@@ -2,6 +2,7 @@ package com.example.jessi.servicesapp.subcategory;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -70,7 +71,7 @@ public class SubCategoryActivity extends AppCompatActivity {
                                         subCategoryModelList.add(subCategoryModel);
                                     }
                                     Log.d(TAG, "onResponse: Adapter View Started");
-                                    layoutManager = new LinearLayoutManager(SubCategoryActivity.this);
+                                    layoutManager = new GridLayoutManager(SubCategoryActivity.this, 2);//new LinearLayoutManager(SubCategoryActivity.this);
                                     adapter = new SubCategoryAdapter(SubCategoryActivity.this, subCategoryModelList);
                                     recyclerView = findViewById(R.id.rv_subcategory);
                                     recyclerView.setLayoutManager(layoutManager);

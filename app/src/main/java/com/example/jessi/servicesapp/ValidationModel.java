@@ -9,11 +9,11 @@ public class ValidationModel {
     private static final String TAG = "Model_ValSTARTED";
 
 
-    public  final String USERNAME_PATTERN = "^[ A-Za-z0-9._-]{3,15}$";
-    public  final String PASSWORD_PATTERN = "^[A-Za-z0-9.-_!]{6,18}$";
-    public  final String EMAIL_PATTERN = "^[a-zA-Z0-9._-]{3,20}@[a-zA-Z0-9]{3,9}.com$";
-    public  final String DOB_PATTERN = "^(\\d{2}-?\\d{2}-?\\d{4})$";
-    public  final String MOBILE_PATTERN = "^(\\d{3}?\\d{3}?\\d{4})$";
+    public final String USERNAME_PATTERN = "^[ A-Za-z0-9._-]{3,15}$";
+    public final String PASSWORD_PATTERN = "^[A-Za-z0-9.-_!]{6,18}$";
+    public final String EMAIL_PATTERN = "^[a-zA-Z0-9._-]{3,20}@[a-zA-Z0-9]{3,9}.com$";
+    public final String DOB_PATTERN = "^(\\d{2}-?\\d{2}-?\\d{4})$";
+    public final String MOBILE_PATTERN = "^(\\d{3}?\\d{3}?\\d{4})$";
 
     boolean match = false;
     private Pattern pattern;
@@ -30,21 +30,19 @@ public class ValidationModel {
 
     int index = 0;
 
-//--------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------
     public ValidationModel() {
         textViewList = new ArrayList<>();
         fieldNamesList = new ArrayList<>();
         fieldResultList = new ArrayList<>();
         patternList = new ArrayList<>();
         errorMessageList = new ArrayList<>();
-
     }
 
-//--------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------
     public ValidationModel(final ArrayList<String> patterns,
                            ArrayList<String> fieldNames,
-                           ArrayList<String> errorMessageList)
-    {
+                           ArrayList<String> errorMessageList) {
         Log.d(TAG, "ModelValidation: STARTED");
 
         patternList = patterns;
@@ -53,46 +51,41 @@ public class ValidationModel {
         fieldNamesList = new ArrayList<>();
         fieldResultList = new ArrayList<>();
 
-        for (int i = 0; i < patternList.size(); i++)
-        {
+        for (int i = 0; i < patternList.size(); i++) {
             fieldNamesList.add(fieldNames.get(i));
         }
     }
 
-    public void addPatternString(final String input)
-    {
+    public void addPatternString(final String input) {
         patternList.add(input);
     }
-//--------------------------------------------------------------------------------------------------
-    public void addTextViewString(String input)
-    {
+
+    //--------------------------------------------------------------------------------------------------
+    public void addTextViewString(String input) {
         textViewList.add(input);
     }
 
-    public void addErrorMessage(String errormsg)
-    {
+    public void addErrorMessage(String errormsg) {
         errorMessageList.add(errormsg);
     }
 
-    public void addFeildNames(String name){
+    public void addFeildNames(String name) {
         fieldNamesList.add(name);
     }
-//--------------------------------------------------------------------------------------------------
-    public boolean validation()
-    {
+
+    //--------------------------------------------------------------------------------------------------
+    public boolean validation() {
         Log.d(TAG, "validation: STARTED");
 
         this.isVal = true;
-        for (int i = 0; i < patternList.size(); i++)
-        {
+        for (int i = 0; i < patternList.size(); i++) {
             pattern = Pattern.compile(patternList.get(i));
             match = pattern.matcher(textViewList.get(i)).matches();
             if (!match) {
                 Boolean tempbool = new Boolean(false);
                 fieldResultList.add(tempbool);
                 isVal = false;
-            }
-            else {
+            } else {
                 Boolean tempbool = new Boolean(true);
                 fieldResultList.add(tempbool);
             }
@@ -103,24 +96,19 @@ public class ValidationModel {
         fieldResultList.clear();
         return isVal;
     }
+
     //--------------------------------------------------------------------------------------------------
     private void setFailResuls() {
-        Log.d(TAG, "setFailResuls: STARTED");
-        errormsg = "Field Results: \n";
+        Log.d(TAG, "setFailResults: STARTED");
+        errormsg = "ERROR: \n";
 
-        for (int i = 0; i< fieldNamesList.size(); i++) {
+        for (int i = 0; i < fieldNamesList.size(); i++) {
             if (fieldResultList.get(i).booleanValue()) {
-                errormsg += "\n SUCCESS: " + fieldNamesList.get(i);
+                errormsg += "\nSuccess: " + fieldNamesList.get(i) + "\n";
                 continue;
+            } else {
+                errormsg += "\nError: " + fieldNamesList.get(i) + ". " + errorMessageList.get(i) + "\n";
             }
-            else {
-                errormsg += "\n Error  with " + fieldNamesList.get(i)  + ". "  + errorMessageList.get(i) ;
-            }
-
-//            errormsg += "\n patternList: " + patternList.size();
-//            errormsg += "\n fieldNamesList: " + fieldNamesList.size();
-//            errormsg += "\n textViewList: " + textViewList.size();
-//            errormsg += "\n fieldResultList: " + fieldResultList.size();
         }
     }
 
@@ -128,6 +116,7 @@ public class ValidationModel {
         Log.d(TAG, "getErrormsg: STARTED");
         return this.errormsg;
     }
+
     private boolean isMatch() {
         return match;
     }

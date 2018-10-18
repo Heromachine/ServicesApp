@@ -1,9 +1,7 @@
 package com.example.jessi.servicesapp.login;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +18,7 @@ import com.example.jessi.servicesapp.AppController;
 import com.example.jessi.servicesapp.R;
 import com.example.jessi.servicesapp.User;
 import com.example.jessi.servicesapp.ValidationModel;
-import com.example.jessi.servicesapp.category.CategoryActivity;
-import com.example.jessi.servicesapp.category.CategoryNav;
+import com.example.jessi.servicesapp.category.CategoryNavActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
 
     ValidationModel validationModel;
-    private static final String baseURL = "http://servdoservice.com/api/rest/v1/login.php?" ;
+    private static final String baseURL = "http://servdoservice.com/api/rest/v1/login.php?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         validationModel.addErrorMessage("Please try again.");
 
 
-
-        btnLogin    = findViewById(R.id.btn_login);
+        btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
-        tvForgotPW  = findViewById(R.id.tv_forgotpw);
-        email       = findViewById(R.id.et_username);
-        password    = findViewById(R.id.et_password);
+        tvForgotPW = findViewById(R.id.tv_forgotpw);
+        email = findViewById(R.id.et_username);
+        password = findViewById(R.id.et_password);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +71,11 @@ public class LoginActivity extends AppCompatActivity {
                 validationModel.addTextViewString(email.getText().toString());
                 validationModel.addTextViewString(password.getText().toString());
                 boolean valid = validationModel.validation();
-                if (valid){
+                if (valid) {
                     volleyCall();
+                } else {
+                    AppController.getInstance().alertUserError(validationModel.getErrormsg(), LoginActivity.this);
                 }
-                else{
-                    AppController.getInstance().alertUserError(validationModel.getErrormsg(),LoginActivity.this );
-                }
-
 
             }
 
@@ -98,11 +92,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    String getFinalURL(){
-        return baseURL +"email="+email.getText().toString()+"&password="+ password.getText().toString();
+    String getFinalURL() {
+        return baseURL + "email=" + email.getText().toString() + "&password=" + password.getText().toString();
     }
 
-    private void volleyCall(){
+    private void volleyCall() {
         Log.d(TAG, "volleyCall: ");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
@@ -116,21 +110,18 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             String result = response.get("result").toString();
 
-                            if (result.equals("login_ok"))
-                            {
+                            if (result.equals("login_ok")) {
                                 Log.d(TAG, "onResponse: Login Ok Started");
                                 User tempUser = new User();
                                 tempUser.setUserID(response.get("userId").toString());
                                 AppController.getInstance().setCurrentUser(tempUser);
-                                startNextActivity(LoginActivity.this, CategoryNav.class);
-                            }
-                            else if(result.equals("email_password_error")){
+                                startNextActivity(LoginActivity.this, CategoryNavActivity.class);
+                            } else if (result.equals("email_password_error")) {
                                 AppController.getInstance().alertUserError
                                         ("Email or Password are invalid. Please try again.",
                                                 LoginActivity.this);
 
-                            }
-                            else if (result.equals("mandatory_field_required")){
+                            } else if (result.equals("mandatory_field_required")) {
                                 AppController.getInstance().alertUserError
                                         ("Email/Password are missing. Please complete all fields.",
                                                 LoginActivity.this);
@@ -150,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
-    private void startNextActivity(Context context, Class next){
+    private void startNextActivity(Context context, Class next) {
         Intent intent =
                 new Intent(context, next);
         startActivity(intent);
